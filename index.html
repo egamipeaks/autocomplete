@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" href="css/layout.css" />
+	</head>
+	<body>
+		<form id="wordSearch">
+			<input type="text" id="input" name="input" value="" />
+			<input type="submit" id="submit" />
+			<div id="matchesWrapper">
+				Matches:
+			</div>
+		</form>
+
+		<script src="js/string.extend.js"></script>
+		<script src="js/keycodes.js"></script>
+		<script src="js/ajax.js"></script>
+		<script src="js/autocomplete.js"></script>
+		<script>
+
+		(function() {
+
+			var autocomplete = new AutoComplete({
+				input: document.getElementById('input'),
+				dropDown: document.getElementById('matchesWrapper'),
+				url : function() {
+					return 'http://localhost:8080/words/'+this.input.value;
+				}
+			});
+
+		}());
+
+		</script>
+	</body>
+</html>
